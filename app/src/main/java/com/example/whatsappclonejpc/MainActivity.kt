@@ -3,7 +3,7 @@ package com.example.whatsappclonejpc
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.example.whatsappclonejpc.presentation.welcomeScreen.SplashScreen
+import com.example.whatsappclonejpc.presentation.userRegistration.UserRegistration
 import com.example.whatsappclonejpc.ui.theme.WhatsAppCloneJPCTheme
 
 class MainActivity : ComponentActivity() {
@@ -11,7 +11,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             WhatsAppCloneJPCTheme {
-              SplashScreen()
+                UserRegistration()
             }
         }
     }

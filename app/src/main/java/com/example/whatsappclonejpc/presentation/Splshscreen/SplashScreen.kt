@@ -1,4 +1,4 @@
-package com.example.whatsappclonejpc.presentation.welcomeScreen
+package com.example.whatsappclonejpc.presentation.Splshscreen
 
 
 import androidx.compose.foundation.Image
