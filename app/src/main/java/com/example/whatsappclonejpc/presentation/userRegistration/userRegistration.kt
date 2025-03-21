@@ -9,14 +9,20 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,7 +45,7 @@ fun UserRegistration() {
     var expanded by remember { mutableStateOf(false) }
     var selectedCountry by remember { mutableStateOf("Bangladesh") }
     var phoneNumber by remember { mutableStateOf("") }
-    var countryCode by remember { mutableStateOf("880") }
+    var countryCode by remember { mutableStateOf("+880") }
 
     Column(
         modifier = Modifier
@@ -297,10 +303,67 @@ fun UserRegistration() {
                         selectedCountry = country
                         expanded = false
                     })
-
             }
         }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(18.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Row {
+                TextField(
+                    singleLine = true,
+                    value = countryCode,
+                    onValueChange = { countryCode = it },
+                    modifier = Modifier.width(90.dp),
+                    textStyle = LocalTextStyle.current.copy(fontSize = 18.sp),
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = Color.Transparent,
+                        unfocusedContainerColor = Color.Transparent,
+
+                        focusedIndicatorColor = colorResource(R.color.light_green),
+                        unfocusedIndicatorColor = colorResource(R.color.light_green),
+                    )
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                TextField(
+                    singleLine = true,
+                    value = phoneNumber,
+                    onValueChange = { phoneNumber = it },
+                    placeholder = { Text("Enter phone number") },
+                    modifier = Modifier.fillMaxWidth(),
+                    textStyle = LocalTextStyle.current.copy(fontSize = 18.sp),
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = Color.Transparent,
+                        unfocusedContainerColor = Color.Transparent,
+
+                        focusedIndicatorColor = colorResource(R.color.light_green),
+                        unfocusedIndicatorColor = colorResource(R.color.light_green),
+                    )
+                )
+
+            }
+            Spacer(modifier = Modifier.size(10.dp))
+            Text(
+                "Carrier charges may apply.",
+                fontSize = 12.sp,
+                color = Color.Gray
+            )
+            Spacer(modifier = Modifier.size(20.dp))
+            Button(
+                onClick = { /*TODO*/ },
+                shape = RoundedCornerShape(6.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorResource(id = R.color.dark_green)
+                )
+            )
+            {
+
+                Text("Next", fontSize = 18.sp)
+            }
 
 
+        }
     }
 }
